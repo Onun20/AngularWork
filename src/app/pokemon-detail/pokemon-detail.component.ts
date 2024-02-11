@@ -12,6 +12,7 @@ import { Location } from '@angular/common';
 
 
 export class PokemonDetailComponent implements OnInit{
+  pokemons: Pokemon[] = [];
   pokemon: Pokemon | undefined ;
 
   constructor(

@@ -79,10 +79,10 @@ export class PokemonService {
       return of([]);
     }
     return this.http.get<Pokemon[]>(`${this.pokemonUrl}/?name=${term}`).pipe(
-      tap(x => x.length ?
+      tap(p => p.length ?
         this.log(`found pokemons matching "${term}"`) :
         this.log(`no pokemons matching "${term}"`)),
-      catchError(this.handleError<Pokemon[]>('searchs', []))
+      catchError(this.handleError<Pokemon[]>('searchsPokemons', []))
     );
   }
 

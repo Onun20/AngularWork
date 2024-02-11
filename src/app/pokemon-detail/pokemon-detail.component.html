@@ -1,3 +1,9 @@
 <div *ngIf="pokemon">
-  <h2>{{pokemon.name}} Details</h2>
+  <img src="{{pokemon.imageUrl}}" alt="Logo da Aplicação" style="display: block; margin: 0 auto;">
+  <h2>{{pokemon.name | uppercase}} </h2>
+  <div><span>Pokemonid: </span>{{pokemon.id}}</div>
+  <div>
+    <span>Pokemon name: </span> {{pokemon.name}}
+  </div>
+  <button type="button" (click)="goBack()">go back</button>
 </div>

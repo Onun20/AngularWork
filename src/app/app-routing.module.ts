@@ -4,10 +4,12 @@ import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.componen
 import { VerifyAuthService } from './verify-auth.service';
 import { PokemonsComponent } from './pokemons/pokemons.component';
 import { PokemonSearchComponent } from './pokemon-search/pokemon-search.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 const routes: Routes = [
-  { path: 'detail/:id', component: PokemonDetailComponent, canActivate: [VerifyAuthService]},
+  { path: 'dashboard', component: DashboardComponent},
+  { path: 'detail/:id', component: PokemonDetailComponent},
   { path: 'pokemons', component: PokemonsComponent},
   { path: 'pokemon-search', component: PokemonSearchComponent}
 
