@@ -1,45 +1,85 @@
+#search-component {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #c9c7d6; 
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-top: 60px;
+  margin-bottom: 100px
+}
+
 label {
-    display: block;
-    font-weight: bold;
-    font-size: 1.2rem;
-    margin-top: 1rem;
-    margin-bottom: .5rem;
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333; 
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-style: oblique;
+  font-size: 24px;
+}
+
+#search-box {
+  width: 80%;
+  padding: 15px;
   
-  }
-  input {
-    padding: .5rem;
-    width: 100%;
-    max-width: 600px;
-    box-sizing: border-box;
-    display: block;
-  }
+  background-color: #2c3e50; 
+  border-radius: 50px;
+  box-shadow: 5px 4px 8px rgba(0, 0, 0, 0.2); 
+  font-size: 18px;
+  color: #ffffff; 
+  transition: box-shadow 0.3s, background-color 0.3s; 
+  position: relative;
+  overflow: hidden; 
+}
+
+#search-box:focus {
   
-  input:focus {
-    outline: #336699 auto 1px;
-  }
+  box-shadow: 0 0 20px rgba(23, 122, 83, 0.7), 0 0 40px rgba(0, 255, 155, 0.3); 
+}
+
+#search-box::placeholder {
+  color: #ffffff;
+  opacity: 0.5; 
+}
+
+#search-box::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #2ecc71, #3498db); /* Gradiente verde e azul */
+  top: 0;
+  left: 0;
+  z-index: -1; 
+  transition: transform 0.5s; 
+  transform: scaleX(0); 
+}
+
+#search-box:focus::before {
+  transform: scaleX(1); 
+}
+
+
+.search-result {
   
-  li {
-    list-style-type: none;
-  }
-  .search-result li a {
-    border-bottom: 1px solid gray;
-    border-left: 1px solid gray;
-    border-right: 1px solid gray;
-    display: inline-block;
-    width: 100%;
-    max-width: 600px;
-    padding: .5rem;
-    box-sizing: border-box;
-    text-decoration: none;
-    color: black;
-  }
-  
-  .search-result li a:hover {
-    background-color: #435A60;
-    color: white;
-  }
-  
-  ul.search-result {
-    margin-top: 0;
-    padding-left: 0;
-  }
+  padding: 0;
+}
+
+.search-result li {
+  margin-bottom: 10px;
+}
+
+.search-result li a {
+  display: block;
+  padding: 12px;
+  background-color: #fff; 
+  border-radius: 5px;
+  text-decoration: none;
+  color: #333; 
+  transition: background-color 0.3s; 
+}
+
+.search-result li a:hover {
+  background-color: #f8f8f8; 
+}

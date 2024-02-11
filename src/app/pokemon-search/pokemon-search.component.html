@@ -1,12 +1,37 @@
+<!-- 
 <div id="search-component">
   <label for="search-box">Pokemon Search</label>
   <input #searchBox id="search-box" (input)="search(searchBox.value)" />
 
   <ul class="search-result">
     <li *ngFor="let pokemon of pokemons$ | async" >
-      <a routerLink="/detail/{{pokemon.id}}">
+      <a [routerLink]="['/detail', pokemon.id]">
+        <img [src]="pokemon.imageUrl" alt="{{pokemon.name}}">
         {{pokemon.name}}
       </a>
     </li>
   </ul>
 </div>
+
+
+ -->
+
+
+
+
+
+
+
+ <div id="search-component">
+  <label for="search-box">Pokemon Search</label>
+  <input #searchBox id="search-box" 
+  (input)="search(searchBox.value)" />
+
+  <ul class="search-result">
+    <li *ngFor="let pokemon of pokemons$ | async" >
+      <a routerLink="/detail/{{pokemon.id}}">
+        {{pokemon.id}}
+      </a>
+    </li>
+  </ul>
+</div> 

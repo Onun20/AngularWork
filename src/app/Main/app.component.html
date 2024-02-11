@@ -1,9 +1,16 @@
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+
 <div class="header">
     <img src="{{logoUrl}}" alt="Logo da Aplicação" style="display: block; margin: 0 auto;">
+</div>
+<div class="autent"> 
+  
     User is authenticated?:
     <input type="Radio" name="isAuth" (change)="login(false)"> No
     <input type="Radio" name="isAuth" (change)="login(true)"> Yes
 </div>
+
 <br/>
 <nav>
   <a routerLink="/pokemons">POKEMONS LIST</a>

@@ -3,6 +3,8 @@ import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { Pokemon } from '../Pokemon';
 import { PokemonService } from '../pokemon.service';
+import { of } from 'rxjs';
+
 
 
 @Component({
@@ -18,6 +20,7 @@ export class PokemonSearchComponent implements OnInit {
 
   constructor(private pokemonService: PokemonService) {}
 
+  
   search(term: string): void {
     this.searchTerms.next(term);
   }
@@ -31,7 +34,8 @@ export class PokemonSearchComponent implements OnInit {
       distinctUntilChanged(),
 
       // switch to new search observable each time the term changes
-      switchMap((term: string) => this.pokemonService.searchPokemons(term)),
+      switchMap((term: string) => 
+      this.pokemonService.searchPokemons(term)),
     );
   }
 }
