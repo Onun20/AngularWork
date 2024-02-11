@@ -1,5 +1,13 @@
-<header>
-    <img src="{{logoUrl}}" alt="Logo da Aplicação" style="max-width: 500px; max-height: 500px;display: block; margin: 0 auto;">
-  </header>
-  
-<app-pokemons></app-pokemons>
+<div class="header">
+    <img src="{{logoUrl}}" alt="Logo da Aplicação" style="display: block; margin: 0 auto;">
+    User is authenticated?:
+    <input type="Radio" name="isAuth" (change)="login(false)"> No
+    <input type="Radio" name="isAuth" (change)="login(true)"> Yes
+</div>
+<br/>
+<nav>
+  <a routerLink="/pokemons">POKEMONS</a>
+  <br> <br/>
+  <a routerLink="/pokemon-search">POKEMONS SEARCH</a>
+</nav>
+<router-outlet></router-outlet>

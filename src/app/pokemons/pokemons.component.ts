@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Pokemon } from '../pokemon';
+import { Pokemon } from '../Pokemon';
 import { PokemonService } from '../pokemon.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class PokemonsComponent implements OnInit {
 
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.getPokemons();
   }
 
   getPokemons(): void {

@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from './message.service';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { Pokemon } from './pokemon';
+import { Pokemon } from './Pokemon';
 import { PokemonDTO } from './PokemonDTO';
 
 @Injectable({
@@ -11,6 +11,7 @@ import { PokemonDTO } from './PokemonDTO';
 })
 export class PokemonService {
   private pokemonUrl = 'https://softwium.com/api/pokemons';  // URL to web api
+  private imgUrl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -20,13 +21,33 @@ export class PokemonService {
     private http: HttpClient,private messageService: MessageService) { }
 
   /** GET pokemons from the server */
+  // getPokemons(): Observable<Pokemon[]> {
+  //   return this.http.get<Pokemon[]>(this.pokemonUrl)
+  //     .pipe(
+  //       tap(_ => this.log('fetched Pokemons')),
+  //       catchError(this.handleError<Pokemon[]>('getPokemons', []))
+  //     );
+  // }
   getPokemons(): Observable<Pokemon[]> {
-    return this.http.get<Pokemon[]>(this.pokemonUrl)
-      .pipe(
-        tap(_ => this.log('fetched heroes')),
-        catchError(this.handleError<Pokemon[]>('getHeroes', []))
-      );
+    return this.http.get<any[]>(this.pokemonUrl).pipe(
+      tap(_ => this.log('fetched Pokemons')),
+      catchError(this.handleError<Pokemon[]>('getPokemons', [])),
+      map(pokemons => {
+        return pokemons.map(pokemon => {
+          return {
+            id: pokemon.id,
+            name: pokemon.name,
+            height: pokemon.height,
+            weight: pokemon.weight,
+            types: pokemon.types,
+            family: pokemon.family,
+            imageUrl: `${this.imgUrl}${pokemon.id}.png` // Montando o URL da imagem
+          };
+        });
+      })
+    );
   }
+
 
   /** GET pokemon by id. Return `undefined` when id not found */
   getPokemonNo404<Data>(id: number): Observable<Pokemon> {
@@ -125,6 +146,6 @@ export class PokemonService {
 
   /** Log a HeroService message with the MessageService */
   private log(message: string) {
-    this.messageService.add(`HeroService: ${message}`);
+    this.messageService.add(`PokemonService: ${message}`);
   }
 }

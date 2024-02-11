@@ -1,20 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Observable, Subject } from 'rxjs';
-
-import {
-   debounceTime, distinctUntilChanged, switchMap
- } from 'rxjs/operators';
-
-import { Pokemon } from '../pokemon';
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { Pokemon } from '../Pokemon';
 import { PokemonService } from '../pokemon.service';
+
 
 @Component({
   selector: 'app-pokemon-search',
   templateUrl: './pokemon-search.component.html',
   styleUrls: [ './pokemon-search.component.css' ]
 })
+
 export class PokemonSearchComponent implements OnInit {
+  
   pokemons$!: Observable<Pokemon[]>;
   private searchTerms = new Subject<string>();
 
