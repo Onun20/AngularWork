@@ -14,6 +14,7 @@ import { Location } from '@angular/common';
 export class PokemonDetailComponent implements OnInit{
   pokemons: Pokemon[] = [];
   pokemon: Pokemon | undefined ;
+  imageUrl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'
 
   constructor(
     private route: ActivatedRoute,
@@ -25,10 +26,19 @@ export class PokemonDetailComponent implements OnInit{
     this.getPokemon();
   }
 
+  // getPokemon(): void {
+  //   const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
+  //   this.pokemonService.getPokemon(id)
+  //     .subscribe(pokemon => this.pokemon = pokemon);
+  // }
+
   getPokemon(): void {
     const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
     this.pokemonService.getPokemon(id)
-      .subscribe(pokemon => this.pokemon = pokemon);
+      .subscribe(pokemon => {
+        this.pokemon = pokemon;
+        this.pokemon.imageUrl = pokemon.imageUrl; // Certifique-se de substituir 'imageURL' pelo nome da propriedade que contém a URL da imagem
+      });
   }
 
   goBack(): void {

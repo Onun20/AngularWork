@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Pokemon } from '../Pokemon';
 import { PokemonService } from '../pokemon.service';
+import { NumberSymbol } from '@angular/common';
 
 @Component({
   selector: 'app-pokemons',
   templateUrl: './pokemons.component.html',
   styleUrls: ['./pokemons.component.css']
 })
-export class PokemonsComponent implements OnInit {
+export class PokemonsComponent implements OnInit,OnDestroy {
   pokemons: Pokemon[] = [];
+  page = 1;
 
   constructor(private pokemonService: PokemonService) { }
 
@@ -16,11 +18,26 @@ export class PokemonsComponent implements OnInit {
   ngOnInit(): void {
     this.getPokemons();
   }
+  ngOnDestroy(): void {}
 
   getPokemons(): void {
     this.pokemonService.getPokemons()
-    .subscribe(pokemons => this.pokemons = pokemons);
+    .subscribe(pokemons => this.pokemons = pokemons)
   }
+
+  // getPokemons(): void {
+  //   this.pokemonService.getPokemons()
+  //   .subscribe((response: any) => {
+  //     response.results.forEach(pokemon => {
+  //       this.pokemonService.getPokemons(pokemon.name)
+  //       .subscribe((uniqResponse: any)=> {
+  //         this.pokemons.push(uniqResponse);
+  //         console.log(this.pokemons);
+          
+  //       })
+  //   })
+  //   });
+  // }
 
   add(name : string) : void {
     name = name.trim();
@@ -32,4 +49,17 @@ export class PokemonsComponent implements OnInit {
     this.pokemons = this.pokemons.filter(p => p !== pokemon);
     this.pokemonService.deletePokemon(pokemon.id).subscribe();
   }
+
+  search(term: string): void {
+
+    if (term) {
+      this.pokemons = this.pokemons.filter((pokemon) =>
+        pokemon.name.toLowerCase().includes(term.toLowerCase())
+      );
+    } else {
+      this.pokemons = this.pokemons.slice();
+    }
+  }
+
+
 }

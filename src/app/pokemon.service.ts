@@ -9,25 +9,23 @@ import { PokemonDTO } from './PokemonDTO';
 @Injectable({
   providedIn: 'root'
 })
+
 export class PokemonService {
-  private pokemonUrl = 'https://softwium.com/api/pokemons';  // URL to web api
-  private imgUrl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'
+  
+
+  private pokemonUrl = 'https://softwium.com/api/pokemons'; 
+  private imageUrl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'
+
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
+
   constructor(
     private http: HttpClient,private messageService: MessageService) { }
 
-  /** GET pokemons from the server */
-  // getPokemons(): Observable<Pokemon[]> {
-  //   return this.http.get<Pokemon[]>(this.pokemonUrl)
-  //     .pipe(
-  //       tap(_ => this.log('fetched Pokemons')),
-  //       catchError(this.handleError<Pokemon[]>('getPokemons', []))
-  //     );
-  // }
+
   getPokemons(): Observable<Pokemon[]> {
     return this.http.get<any[]>(this.pokemonUrl).pipe(
       tap(_ => this.log('fetched Pokemons')),
@@ -41,7 +39,7 @@ export class PokemonService {
             weight: pokemon.weight,
             types: pokemon.types,
             family: pokemon.family,
-            imageUrl: `${this.imgUrl}${pokemon.id}.png` // Montando o URL da imagem
+            imageUrl: `${this.imageUrl}${pokemon.id}.png`
           };
         });
       })
@@ -49,6 +47,7 @@ export class PokemonService {
   }
 
 
+  
   /** GET pokemon by id. Return `undefined` when id not found */
   getPokemonNo404<Data>(id: number): Observable<Pokemon> {
     const url = `${this.pokemonUrl}/?id=${id}`;
@@ -76,6 +75,7 @@ export class PokemonService {
   searchPokemons(term: string): Observable<Pokemon[]> {
     if (!term.trim()) {
       // if not search term, return empty hero array.
+      console.log('Nenhum termo de pesquisa fornecido.');
       return of([]);
     }
     return this.http.get<Pokemon[]>(`${this.pokemonUrl}/?name=${term}`).pipe(

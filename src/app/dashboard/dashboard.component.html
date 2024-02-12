@@ -2,8 +2,6 @@
 <div class="pokemons-menu">
   <a *ngFor="let pokemon of pokemons"
       routerLink="/detail/{{pokemon.id}}">
-      {{pokemon.name}}
+      <img src="{{pokemon.imageUrl}}" alt="Logo da Aplicação" style="display: block; margin: 0 auto;"> {{ pokemon.name }} - {{pokemon.types}}
   </a>
 </div>
-
-<app-pokemon-search></app-pokemon-search>
