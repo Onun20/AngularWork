@@ -10,7 +10,6 @@ describe('PokemonSearchComponent', () => {
     TestBed.configureTestingModule({
       declarations: [PokemonSearchComponent]
     });
-    
     fixture = TestBed.createComponent(PokemonSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

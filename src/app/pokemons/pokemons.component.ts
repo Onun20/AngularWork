@@ -11,6 +11,7 @@ import { NumberSymbol } from '@angular/common';
 export class PokemonsComponent implements OnInit,OnDestroy {
   pokemons: Pokemon[] = [];
   page = 1;
+  searchTerm: string = '';
 
   constructor(private pokemonService: PokemonService) { }
 
@@ -54,12 +55,9 @@ export class PokemonsComponent implements OnInit,OnDestroy {
 
     if (term) {
       this.pokemons = this.pokemons.filter((pokemon) =>
-        pokemon.name.toLowerCase().includes(term.toLowerCase())
-      );
+        pokemon.name.toLowerCase().includes(term.toLowerCase()));
     } else {
-      this.pokemons = this.pokemons.slice();
+      this.getPokemons();
     }
   }
-
-
 }

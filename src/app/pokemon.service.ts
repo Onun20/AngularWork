@@ -45,10 +45,7 @@ export class PokemonService {
       })
     );
   }
-
-
   
-  /** GET pokemon by id. Return `undefined` when id not found */
   getPokemonNo404<Data>(id: number): Observable<Pokemon> {
     const url = `${this.pokemonUrl}/?id=${id}`;
     return this.http.get<Pokemon[]>(url)
@@ -62,7 +59,6 @@ export class PokemonService {
       );
   }
 
-  /** GET pokemons by id. Will 404 if id not found */
   getPokemon(id: number): Observable<Pokemon> {
     const url = `${this.pokemonUrl}/${id}`;
     return this.http.get<Pokemon>(url).pipe(
@@ -71,10 +67,8 @@ export class PokemonService {
     );
   }
 
-  /* GET pokemons whose name contains search term */
   searchPokemons(term: string): Observable<Pokemon[]> {
     if (!term.trim()) {
-      // if not search term, return empty hero array.
       console.log('Nenhum termo de pesquisa fornecido.');
       return of([]);
     }
@@ -86,9 +80,11 @@ export class PokemonService {
     );
   }
 
-  //////// Save methods //////////
+  searchById(id: number): Observable <any[]> {
+    const url = `${this.pokemonUrl}/${id}`;
+    return this.http.get<any[]>(url);
+  }
 
-  /** POST: add a new hero to the server */
   addPokemon(name: string): Observable<Pokemon> {
     const newPokemon: PokemonDTO = {
       name: name.trim(),
@@ -104,7 +100,6 @@ export class PokemonService {
     );
   }
 
-  /** DELETE: delete the hero from the server */
   deletePokemon(id: number): Observable<Pokemon> {
     const url = `${this.pokemonUrl}/${id}`;
 
@@ -114,7 +109,6 @@ export class PokemonService {
     );
   }
 
-  /** PUT: update the hero on the server */
   updatePokemon(pokemon: Pokemon): Observable<any> {
     const url = `${this.pokemonUrl}/${pokemon.id}`;
     return this.http.put(this.pokemonUrl, pokemon, this.httpOptions).pipe(
@@ -123,28 +117,18 @@ export class PokemonService {
     );
   }
 
-  /**
-   * Handle Http operation that failed.
-   * Let the app continue.
-   *
-   * @param operation - name of the operation that failed
-   * @param result - optional value to return as the observable result
-   */
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
-      // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
 
-      // TODO: better job of transforming error for user consumption
       this.log(`${operation} failed: ${error.message}`);
 
-      // Let the app keep running by returning an empty result.
       return of(result as T);
     };
   }
 
-  /** Log a HeroService message with the MessageService */
   private log(message: string) {
     this.messageService.add(`PokemonService: ${message}`);
   }
