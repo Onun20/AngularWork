@@ -55,7 +55,7 @@ export class PokemonService {
           const outcome = p ? 'fetched' : 'did not find';
           this.log(`${outcome} pokemon id=${id}`);
         }),
-        catchError(this.handleError<Pokemon>(`getPokemon id=${id}`))
+        catchError(this.handleError<Pokemon>(`getPokemon id=${id}`)),
       );
   }
 
@@ -64,6 +64,7 @@ export class PokemonService {
     return this.http.get<Pokemon>(url).pipe(
       tap(_ => this.log(`fetched pokemon id=${id}`)),
       catchError(this.handleError<Pokemon>(`getPokemon id=${id}`))
+      // map(pokemon => pokemon.imageUrl)
     );
   }
 

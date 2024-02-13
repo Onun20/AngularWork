@@ -8,7 +8,7 @@ import { NumberSymbol } from '@angular/common';
   templateUrl: './pokemons.component.html',
   styleUrls: ['./pokemons.component.css']
 })
-export class PokemonsComponent implements OnInit,OnDestroy {
+export class PokemonsComponent implements OnInit {
   pokemons: Pokemon[] = [];
   page = 1;
   searchTerm: string = '';
@@ -19,26 +19,11 @@ export class PokemonsComponent implements OnInit,OnDestroy {
   ngOnInit(): void {
     this.getPokemons();
   }
-  ngOnDestroy(): void {}
 
   getPokemons(): void {
     this.pokemonService.getPokemons()
     .subscribe(pokemons => this.pokemons = pokemons)
   }
-
-  // getPokemons(): void {
-  //   this.pokemonService.getPokemons()
-  //   .subscribe((response: any) => {
-  //     response.results.forEach(pokemon => {
-  //       this.pokemonService.getPokemons(pokemon.name)
-  //       .subscribe((uniqResponse: any)=> {
-  //         this.pokemons.push(uniqResponse);
-  //         console.log(this.pokemons);
-          
-  //       })
-  //   })
-  //   });
-  // }
 
   add(name : string) : void {
     name = name.trim();

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../out.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,12 @@ import { AuthService } from '../out.service';
 export class AppComponent {
   logoUrl = 'assets/logo.png';
 
-  constructor(private authservice: AuthService) { }
+  constructor(private authservice: AuthService,private router: Router) {  }
+
+
+  goToHome(): void {
+    this.router.navigate(['/']); // Use o caminho da rota inicial aqui
+  }
 
   login(islogged:boolean){
     if(islogged){
