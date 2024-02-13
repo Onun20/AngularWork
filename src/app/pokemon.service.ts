@@ -63,10 +63,21 @@ export class PokemonService {
     const url = `${this.pokemonUrl}/${id}`;
     return this.http.get<Pokemon>(url).pipe(
       tap(_ => this.log(`fetched pokemon id=${id}`)),
-      catchError(this.handleError<Pokemon>(`getPokemon id=${id}`))
-      // map(pokemon => pokemon.imageUrl)
+      catchError(this.handleError<Pokemon>(`getPokemon id=${id}`)),
+      map(pokemon => {
+        return {
+          id: pokemon.id,
+          name: pokemon.name,
+          height: pokemon.height,
+          weight: pokemon.weight,
+          types: pokemon.types,
+          family: pokemon.family,
+          imageUrl: `${this.imageUrl}${pokemon.id}.png`
+        };
+      })
     );
   }
+
 
   searchPokemons(term: string): Observable<Pokemon[]> {
     if (!term.trim()) {

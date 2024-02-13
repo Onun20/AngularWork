@@ -12,6 +12,7 @@ import { Location } from '@angular/common';
 
 
 export class PokemonDetailComponent implements OnInit{
+  imageUrl: string = '';
   pokemons: Pokemon[] = [];
   pokemon: Pokemon | undefined ;
 
@@ -32,6 +33,16 @@ export class PokemonDetailComponent implements OnInit{
       .subscribe(pokemon => {
         this.pokemon = pokemon;});
   }
+
+  // getPokemon(): void {
+  //   const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
+  //   this.pokemonService.getPokemon(id)
+  //     .subscribe(({ pokemon, imageUrl }) => {
+  //       this.pokemon = pokemon;
+  //       this.imageUrl = imageUrl;
+  //     });
+  // }
+  
 
   goBack(): void {
     this.location.back();

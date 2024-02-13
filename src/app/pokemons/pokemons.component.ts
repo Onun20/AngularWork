@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Pokemon } from '../Pokemon';
 import { PokemonService } from '../pokemon.service';
-import { NumberSymbol } from '@angular/common';
 
 @Component({
   selector: 'app-pokemons',
@@ -11,7 +10,6 @@ import { NumberSymbol } from '@angular/common';
 export class PokemonsComponent implements OnInit {
   pokemons: Pokemon[] = [];
   page = 1;
-  searchTerm: string = '';
 
   constructor(private pokemonService: PokemonService) { }
 

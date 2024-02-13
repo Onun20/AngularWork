@@ -1,10 +1,26 @@
 <div *ngIf="pokemon" class="pokemon-container">
-  <img src="{{pokemon.imageUrl}}" alt="Logo da Aplicação" style="display: block; margin: 0 auto;">
+  <img src="{{pokemon.imageUrl}}" alt="Image of {{ pokemon.name }}" style="display: block; margin: 0 auto;">
   <h2>{{pokemon.name}} </h2>
+  <br/>
   <div>
-    <span>Pokemon ID: </span>{{pokemon.id}}</div>
+    <span>Pokemon ID: </span>{{pokemon.id}}
+  </div>
+  <br/>
   <div>
     <span>Pokemon name: </span> {{pokemon.name}}
   </div>
+  <br/>
+  <div>
+    <span>Pokemon height and weight: </span> [{{pokemon.height}}] - [{{pokemon.weight}}]
+  </div>
+  <br/>
+  <div>
+    <span>Pokemon type: </span> {{pokemon.types}}
+  </div>
+  <br/>
+  <div>
+    <span>Pokemon family: </span> {{pokemon.family}}
+  </div>
+  <br/>
   <button type="button" (click)="goBack()">go back</button>
 </div>

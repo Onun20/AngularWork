@@ -18,19 +18,17 @@ export class DashboardComponent implements OnInit{
     getPokemons(): void {
       this.pokemonService.getPokemons()
         .subscribe(allPokemons => {
-          // Embaralhar a lista completa de Pokémon
-          const shuffledPokemons = this.shuffleArray(allPokemons);
-          // Selecionar os primeiros 5 Pokémon da lista embaralhada
+          const shuffledPokemons = this.pokemonRandom(allPokemons);
           this.pokemons = shuffledPokemons.slice(0, 5);
         });
     }
 
-    private shuffleArray(array: any[]): any[] {
-      const shuffledArray = [...array];
-      for (let i = shuffledArray.length - 1; i > 0; i--) {
+    private pokemonRandom(array: any[]): any[] {
+      const randomPokemons = [...array];
+      for (let i = randomPokemons.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+        [randomPokemons[i], randomPokemons[j]] = [randomPokemons[j], randomPokemons[i]];
       }
-      return shuffledArray;
+      return randomPokemons;
     }
 }

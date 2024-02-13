@@ -15,7 +15,7 @@ export class AppComponent {
 
 
   goToHome(): void {
-    this.router.navigate(['/']); // Use o caminho da rota inicial aqui
+    this.router.navigate(['/']);
   }
 
   login(islogged:boolean){

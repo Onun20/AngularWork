@@ -1,4 +1,4 @@
-/* label {
+label {
   color: #435960;
   font-weight: bold;
 }
@@ -20,7 +20,7 @@ button:disabled {
   background-color: #eee;
   color: #ccc;
   cursor: auto;
-} */
+}
 
 .pokemon-container {
   text-align: center;
