@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthInterceptor } from './Http-Interceptor';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { GrowAnimationDirective } from './grow-animation.directive';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     PokemonDetailComponent,
     PokemonSearchComponent,
     DashboardComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    GrowAnimationDirective
   ],
   imports: [
     BrowserModule,
