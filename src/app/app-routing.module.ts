@@ -6,14 +6,14 @@ import { PokemonsComponent } from './pokemons/pokemons.component';
 import { PokemonSearchComponent } from './pokemon-search/pokemon-search.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { AppComponent } from './Main/app.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [VerifyAuthService]},
   { path: 'detail/:id', component: PokemonDetailComponent, canActivate: [VerifyAuthService]},
   { path: 'pokemons', component: PokemonsComponent},
-  { path: 'pokemon-search', component: PokemonSearchComponent},
-  { path: '**', component: NotFoundComponent}
-
+  { path: 'pokemon-search' , component: PokemonSearchComponent},
+  { path: '**', redirectTo: '' , component: NotFoundComponent}
 ];
 
 @NgModule({
