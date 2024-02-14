@@ -34,16 +34,6 @@ export class PokemonDetailComponent implements OnInit{
         this.pokemon = pokemon;});
   }
 
-  // getPokemon(): void {
-  //   const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
-  //   this.pokemonService.getPokemon(id)
-  //     .subscribe(({ pokemon, imageUrl }) => {
-  //       this.pokemon = pokemon;
-  //       this.imageUrl = imageUrl;
-  //     });
-  // }
-  
-
   goBack(): void {
     this.location.back();
   }

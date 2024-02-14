@@ -19,11 +19,11 @@ export class DashboardComponent implements OnInit{
       this.pokemonService.getPokemons()
         .subscribe(allPokemons => {
           const shuffledPokemons = this.pokemonRandom(allPokemons);
-          this.pokemons = shuffledPokemons.slice(0, 5);
+          this.pokemons = shuffledPokemons.slice(0, 4);
         });
     }
 
-    private pokemonRandom(array: any[]): any[] {
+    pokemonRandom(array: any[]): any[] {
       const randomPokemons = [...array];
       for (let i = randomPokemons.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));

@@ -9,7 +9,8 @@ import { PokemonService } from '../pokemon.service';
 })
 export class PokemonsComponent implements OnInit {
   pokemons: Pokemon[] = [];
-  page = 1;
+  currentPage = 1;
+  itemsPerPage = 15;
 
   constructor(private pokemonService: PokemonService) { }
 
@@ -35,7 +36,6 @@ export class PokemonsComponent implements OnInit {
   }
 
   search(term: string): void {
-
     if (term) {
       this.pokemons = this.pokemons.filter((pokemon) =>
         pokemon.name.toLowerCase().includes(term.toLowerCase()));

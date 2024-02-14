@@ -6,9 +6,11 @@ import { AppComponent } from './Main/app.component';
 import { PokemonsComponent } from './pokemons/pokemons.component';
 import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.component';
 import { PokemonSearchComponent } from './pokemon-search/pokemon-search.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AuthInterceptor } from './Http-Interceptor';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     PokemonsComponent,
     PokemonDetailComponent,
     PokemonSearchComponent,
-    DashboardComponent
+    DashboardComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +28,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     NgxPaginationModule,
     FormsModule
   ],
-  providers: [],
+  providers: [    
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

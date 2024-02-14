@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../out.service';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 export class AppComponent {
   logoUrl = 'assets/logo.png';
 
-  constructor(private authservice: AuthService,private router: Router) {  }
+  constructor(private authservice: AuthService,private router: Router, private http: HttpClient) {  }
 
 
   goToHome(): void {
@@ -24,5 +25,11 @@ export class AppComponent {
     } else {
       this.authservice.logout();
     }
+  }
+  
+  fetchData(): void {
+    this.http.get('https://softwium.com/api/pokemons').subscribe(data => {
+      console.log(data);
+    });
   }
 }

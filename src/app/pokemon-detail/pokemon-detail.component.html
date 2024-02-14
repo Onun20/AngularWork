@@ -1,26 +1,32 @@
 <div *ngIf="pokemon" class="pokemon-container">
   <img src="{{pokemon.imageUrl}}" alt="Image of {{ pokemon.name }}" style="display: block; margin: 0 auto;">
-  <h2>{{pokemon.name}} </h2>
-  <br/>
-  <div>
-    <span>Pokemon ID: </span>{{pokemon.id}}
+
+
+  <div class="attribute-box">
+    <span class="attribute-label">Pokemon ID:</span>
+    <span class="attribute-value">[{{pokemon.id}}]</span>
   </div>
-  <br/>
-  <div>
-    <span>Pokemon name: </span> {{pokemon.name}}
+
+  <div class="attribute-box">
+    <span class="attribute-label">Pokemon name:</span>
+    <span class="attribute-value">{{pokemon.name}}</span>
   </div>
-  <br/>
-  <div>
-    <span>Pokemon height and weight: </span> [{{pokemon.height}}] - [{{pokemon.weight}}]
+
+  <div class="attribute-box">
+    <span class="attribute-label">Pokemon height and weight:</span>
+    <span class="attribute-value">[{{pokemon.height}}] - [{{pokemon.weight}}]</span>
   </div>
-  <br/>
-  <div>
-    <span>Pokemon type: </span> {{pokemon.types}}
+
+  <div class="attribute-box">
+    <span class="attribute-label">Pokemon type:</span>
+    <span class="attribute-value">{{pokemon.types}}</span>
   </div>
-  <br/>
-  <div>
-    <span>Pokemon family: </span> {{pokemon.family}}
+
+  <div class="attribute-box">
+    <span class="attribute-label">Pokemon family:</span>
+    <span class="attribute-value">{{pokemon.family}}</span>
   </div>
+
   <br/>
-  <button type="button" (click)="goBack()">go back</button>
+  <button type="button" (click)="goBack()">GO BACK</button>
 </div>

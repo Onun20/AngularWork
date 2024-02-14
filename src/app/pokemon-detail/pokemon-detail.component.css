@@ -28,7 +28,8 @@ button:disabled {
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 10px;
-  background-color: #f9f9f9;
+  border: 5px solid #355e3b;
+  background-color: #589c5a;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -52,8 +53,8 @@ button:disabled {
 }
 
 .pokemon-container button {
-  background-color: #007bff;
-  color: #fff;
+  background-color: #2b7907;
+  color: #000000;
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
@@ -64,3 +65,32 @@ button:disabled {
 .pokemon-container button:hover {
   background-color: #0056b3;
 }
+
+
+.pokemon-image {
+  display: block;
+  margin: 0 auto;
+}
+
+.attribute-box {
+  background-color: #355e3b;
+  color: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.attribute-label {
+  font-weight: bold;
+}
+
+.attribute-value {
+  color: rgb(57, 236, 51);
+  margin-left: 5px;
+}
+
+h2{
+  color: rgb(57, 236, 51);
+  margin-left: 5px;
+}
+
